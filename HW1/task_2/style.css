@@ -1,0 +1,40 @@
+body{
+  background-color: rgb(136, 135, 133);
+}
+.container{
+  margin: auto;
+  position: relative;
+  width: 50%;
+  background-color: #fff;
+}
+
+.main_square {
+  display: flex;
+  flex-direction: column;
+  border: solid 4px black;
+  height: 500px;
+}
+
+.red_square {
+  height: 50%;
+  width: 50%;
+  background-color: red;
+  position: relative;
+}
+
+.blue_square {
+  margin-left: 50%;
+  height: 50%;
+  width: 50%;
+  background-color: blue;
+}
+
+.green_square {
+  position: absolute;
+  top:25%;
+  left: 25%;
+  background-color: green;
+  height: 50%;
+  width: 50%;
+}
+
