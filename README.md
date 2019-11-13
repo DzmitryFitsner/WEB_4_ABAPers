@@ -14,4 +14,4 @@
 
 ### ***HW3***
 
-[task_1](https://dzmitryfitsner.github.io/WEB_4_ABAPers/HW3/task_1/index.html)
+[task_1](https://dzmitryfitsner.github.io/WEB_4_ABAPers/HW3/index.html)
