@@ -1,0 +1,37 @@
+{
+	"type": "Collection",
+	"properties": {
+		"Title": {
+			"name": "Title",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "Title",
+			"order": 0
+		},
+		"FieldOfStady": {
+			"name": "FieldOfStady",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "FieldOfStady",
+			"order": 1
+		},
+		"Publisher": {
+			"name": "Publisher",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "Publisher",
+			"order": 2
+		},
+		"Author": {
+			"name": "Author",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "Author",
+			"order": 3
+		}
+	}
+}
