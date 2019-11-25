@@ -1,0 +1,13 @@
+{
+	"type": "Collection",
+	"properties": {
+		"variety": {
+			"name": "variety",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "variety",
+			"order": 0
+		}
+	}
+}

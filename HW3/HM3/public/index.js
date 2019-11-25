@@ -40,30 +40,72 @@ Book.prototype.getAuthor = function () {
 
 function Audiobook(title,  fieldOfStudy, publisher, author, length) {
   Book.call(this, title,  fieldOfStudy, publisher, author);
-  this.length = length;
-  this.setLength = function (value) {
-    length = value;
-  }
-  this.getLength = function () {
-    return length;
-  }
+
+
+
+   this.length = length;
+  // this.setLength = function (value) {
+  //   length = value;
+  // }
+  // this.getLength = function () {
+  //   return length;
+  // }
 } 
+
+Audiobook.prototype = Object.create(Book.prototype);
+Audiobook.prototype.constructor = Audiobook;
 
 function Textbook(title,  fieldOfStudy, publisher, author, numberOfPages) {
   Book.call(this, title,  fieldOfStudy, publisher, author);
-  this.setNumberOfPages = function (value) {
-    numberOfPages = value;
-  }
-  this.getNumberOfPages = function () {
-    return numberOfPages;
-  }
+
+  this.numberOfPages = numberOfPages;
+  // this.setNumberOfPages = function (value) {
+  //   numberOfPages = value;
+  // }
+  // this.getNumberOfPages = function () {
+  //   return numberOfPages;
+  // }
 }
+
+Textbook.prototype.constructor = Object.create(Book.prototype);
+Textbook.prototype.constructor = Textbook;
+
+
+function onPrepareCreate(ev){
+  ev.preventDefault();
+  xhrids = new XMLHttpRequest();
+  xhrids.withCredentials = true;
+
+  xhrids.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+          //console.log(this.response);
+          result=JSON.parse(this.response);
+          var ids=document.createElement('select');
+          ids.className='form-control';
+          result.map(function(nthCPU){
+              var id=document.createElement('option');
+              id.innerHTML=nthCPU['variety'];
+              ids.appendChild(id);
+          });
+          var form=document.getElementById('variety').parentElement;
+          form.replaceChild(ids,document.getElementById('variety'));
+          ids.id='variety';
+      }
+  });
+  
+  xhrids.open("GET", "http://localhost:2403/books-differences");
+  xhrids.setRequestHeader("Content-Type", "application/json");
+  xhrids.send();
+}
+
+
 
 function onCreate(ev) {
   ev.preventDefault();
  
- 
-  var data = JSON.stringify({
+  if (String(document.getElementById("variety").value)=='Textbook')
+  {
+    var data = JSON.stringify({
       "Title" : String(document.getElementById("ctitle").value),
       "FieldOfStady": String(document.getElementById("cfieldOfStudy").value),
       "Publisher": String(document.getElementById("cpublisher").value),
@@ -84,6 +126,14 @@ function onCreate(ev) {
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(data);
 }
+else {
+  console.log('Nikita durachok');
+}
+  }
+
+  
+ 
+  
 
 function onRead() {
     console.log('allah');
@@ -237,7 +287,9 @@ function onDelete(ev) {
 }
 
 (function () {
-  
+  document.getElementById('pcbutton').addEventListener(
+    'click', onPrepareCreate
+);
   document.getElementById('cbutton').addEventListener(
       'click',  onCreate 
   );

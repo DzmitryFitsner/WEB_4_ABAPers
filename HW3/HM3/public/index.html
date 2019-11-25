@@ -29,7 +29,7 @@
         <div class="card-header" id="headingOne">
           <h5 class="mb-0">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-              aria-expanded="true" aria-controls="collapseOne">
+              aria-expanded="true" id="pcbutton" aria-controls="collapseOne">
               Create
             </button>
           </h5>
@@ -38,10 +38,18 @@
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
           <div class="card-body">
             <form id='createForm'>
+
               <div class="form-group">
+
+                  <label for="variety">DEF</label>
+                  <select id="variety" class="form-control">
+                    
+                  </select>
+
                 <label for="ctitle">Title</label>
                 <input type="text" class="form-control" id="ctitle" placeholder="Enter title">
               </div>
+
               <div class="form-group">
                 <label for="cfieldOfStudy">Field of study</label>
                 <input type="text" class="form-control" id="cfieldOfStudy" placeholder="Enter field of study">
