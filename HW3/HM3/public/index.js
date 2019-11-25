@@ -4,31 +4,35 @@ this.fieldOfStudy = fieldOfStudy;
 this.publisher = publisher;
 this.author = author;
 
-this.setTitle = function (value) {
-  title = value;
+Book.prototype.setTitle = function (value) {
+  this.title = value;
 }
-this.getTitle = function () {
+
+Book.prototype.getTitle = function () {
   return this.title;
 }
 
-this.setFieldOfStudy = function (value) {
-  fieldOfStudy = value;
+Book.prototype.setFieldOfStudy = function (value) {
+  this.fieldOfStudy = value;
 }
-this.getFieldOfStudy = function () {
+
+Book.prototype.getFieldOfStudy = function () {
   return this.fieldOfStudy;
 }
 
-this.setPublisher = function (value) {
-  publisher = value;
-} 
-this.getPublisher = function () {
+Book.prototype.setPublisher = function (value) {
+  this.publisher = value;
+}
+
+Book.prototype.getPublisher = function () {
   return this.publisher;
 }
 
-this.setAuthor = function (value) {
-  author = value;
+Book.prototype.setAuthor = function (value) {
+  this.author = value;
 }
-this.getAuthor = function () {
+
+Book.prototype.getAuthor = function () {
   return this.author;
 }
 
