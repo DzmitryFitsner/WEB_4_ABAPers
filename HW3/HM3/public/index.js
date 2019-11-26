@@ -71,40 +71,38 @@ Textbook.prototype.constructor = Object.create(Book.prototype);
 Textbook.prototype.constructor = Textbook;
 
 
-function onPrepareCreate(ev){
-  ev.preventDefault();
-  xhrids = new XMLHttpRequest();
-  xhrids.withCredentials = true;
+// function onPrepareCreate(ev){
+//   ev.preventDefault();
+//   xhrids = new XMLHttpRequest();
+//   xhrids.withCredentials = true;
 
-  xhrids.addEventListener("readystatechange", function () {
-      if (this.readyState === 4) {
-          //console.log(this.response);
-          result=JSON.parse(this.response);
-          var ids=document.createElement('select');
-          ids.className='form-control';
-          result.map(function(nthCPU){
-              var id=document.createElement('option');
-              id.innerHTML=nthCPU['variety'];
-              ids.appendChild(id);
-          });
-          var form=document.getElementById('variety').parentElement;
-          form.replaceChild(ids,document.getElementById('variety'));
-          ids.id='variety';
-      }
-  });
+//   xhrids.addEventListener("readystatechange", function () {
+//       if (this.readyState === 4) {
+//           //console.log(this.response);
+//           result=JSON.parse(this.response);
+//           var ids=document.createElement('select');
+//           ids.className='form-control';
+//           result.map(function(nthCPU){
+//               var id=document.createElement('option');
+//               id.innerHTML=nthCPU['variety'];
+//               ids.appendChild(id);
+//           });
+//           var form=document.getElementById('variety').parentElement;
+//           form.replaceChild(ids,document.getElementById('variety'));
+//           ids.id='variety';
+//       }
+//   });
   
-  xhrids.open("GET", "http://localhost:2403/books-differences");
-  xhrids.setRequestHeader("Content-Type", "application/json");
-  xhrids.send();
-}
+//   xhrids.open("GET", "http://localhost:2403/books-differences");
+//   xhrids.setRequestHeader("Content-Type", "application/json");
+//   xhrids.send();
+// }
 
 
 
 function onCreate(ev) {
   ev.preventDefault();
  
-  if (String(document.getElementById("variety").value)=='Textbook')
-  {
     var data = JSON.stringify({
       "Title" : String(document.getElementById("ctitle").value),
       "FieldOfStady": String(document.getElementById("cfieldOfStudy").value),
@@ -125,10 +123,6 @@ function onCreate(ev) {
   xhr.open("POST", "http://localhost:2403/hw3");
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(data);
-}
-else {
-  console.log('Nikita durachok');
-}
   }
 
   
@@ -287,9 +281,9 @@ function onDelete(ev) {
 }
 
 (function () {
-  document.getElementById('pcbutton').addEventListener(
-    'click', onPrepareCreate
-);
+//   document.getElementById('pcbutton').addEventListener(
+//     'click', onPrepareCreate
+// );
   document.getElementById('cbutton').addEventListener(
       'click',  onCreate 
   );
