@@ -189,10 +189,6 @@ xhr.send(data);
  }
   };
 
-
- 
-  
-
 function onRead() {
     console.log('allah');
     xhr = new XMLHttpRequest();
