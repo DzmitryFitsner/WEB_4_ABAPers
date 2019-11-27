@@ -1,37 +1,45 @@
 {
 	"type": "Collection",
 	"properties": {
-		"Title": {
-			"name": "Title",
+		"title": {
+			"name": "title",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "Title",
+			"id": "title",
 			"order": 0
 		},
-		"FieldOfStady": {
-			"name": "FieldOfStady",
+		"fieldOfStady": {
+			"name": "fieldOfStady",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "FieldOfStady",
+			"id": "fieldOfStady",
 			"order": 1
 		},
-		"Publisher": {
-			"name": "Publisher",
+		"publisher": {
+			"name": "publisher",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "Publisher",
+			"id": "publisher",
 			"order": 2
 		},
-		"Author": {
-			"name": "Author",
+		"author": {
+			"name": "author",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "Author",
+			"id": "author",
 			"order": 3
+		},
+		"length": {
+			"name": "length",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "length",
+			"order": 4
 		}
 	}
 }

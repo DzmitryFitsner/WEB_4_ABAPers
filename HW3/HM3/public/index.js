@@ -59,73 +59,137 @@ function Textbook(title,  fieldOfStudy, publisher, author, numberOfPages) {
   Book.call(this, title,  fieldOfStudy, publisher, author);
 
   this.numberOfPages = numberOfPages;
-  // this.setNumberOfPages = function (value) {
-  //   numberOfPages = value;
-  // }
-  // this.getNumberOfPages = function () {
-  //   return numberOfPages;
-  // }
+
 }
 
 Textbook.prototype.constructor = Object.create(Book.prototype);
 Textbook.prototype.constructor = Textbook;
 
+  var elem = document.createElement("div"); 
 
-// function onPrepareCreate(ev){
-//   ev.preventDefault();
-//   xhrids = new XMLHttpRequest();
-//   xhrids.withCredentials = true;
+document.getElementById("textBook").onclick = function(){
 
-//   xhrids.addEventListener("readystatechange", function () {
-//       if (this.readyState === 4) {
-//           //console.log(this.response);
-//           result=JSON.parse(this.response);
-//           var ids=document.createElement('select');
-//           ids.className='form-control';
-//           result.map(function(nthCPU){
-//               var id=document.createElement('option');
-//               id.innerHTML=nthCPU['variety'];
-//               ids.appendChild(id);
-//           });
-//           var form=document.getElementById('variety').parentElement;
-//           form.replaceChild(ids,document.getElementById('variety'));
-//           ids.id='variety';
-//       }
-//   });
+  // console.log(document.getElementById("textBook").value);
+
+    var elemT = document.createElement("div"),
+    before = document.getElementById("before"); 
+    elemT.setAttribute('class', 'form-group');
+    elemT.id="show_input"; 
+     
+    elem.id = "element";
+    before.parentNode.insertBefore(elem, before);
   
-//   xhrids.open("GET", "http://localhost:2403/books-differences");
-//   xhrids.setRequestHeader("Content-Type", "application/json");
-//   xhrids.send();
-// }
+    document.getElementById("element").innerHTML = "";
+
+      var labT = document.createElement("label");
+      labT.setAttribute('for', 'cnamberOfPages');
+      labT.innerText = "Number of pages";
+  
+      var inpT = document.createElement("input");
+      inpT.setAttribute('type', 'text');
+      inpT.setAttribute('class', 'form-control');
+      inpT.setAttribute('id', 'cnumberOfPages');
+      inpT.setAttribute('placeholder', 'Enter number');
+   
+    elemT.appendChild(labT);
+    elemT.appendChild(inpT);
+
+    
+    elem.appendChild(elemT);  
+}
+
+
+document.getElementById("audioBook").onclick = function() {
+  console.log(document.getElementById("audioBook").value);
+
+    var elemA = document.createElement("div"),
+    before = document.getElementById("before"); 
+  elemA.setAttribute('class', 'form-group');
+  elemA.id="show_input"; 
+
+  elem.id = "element";
+    before.parentNode.insertBefore(elem, before);
+  
+    document.getElementById("element").innerHTML = "";
+
+    var labA = document.createElement("label");
+     labA.setAttribute('for', 'clength');
+     labA.innerText = "Lenght"
+    
+
+    var inpA = document.createElement("input");
+    inpA.setAttribute('type', 'text');
+    inpA.setAttribute('class', 'form-control');
+    inpA.setAttribute('id', 'clength');
+    inpA.setAttribute('placeholder', 'Enter length');
+  
+
+  elemA.appendChild(labA);
+  elemA.appendChild(inpA);
+
+  elem.appendChild(elemA);
+
+}
+
 
 
 
 function onCreate(ev) {
   ev.preventDefault();
- 
-    var data = JSON.stringify({
-      "Title" : String(document.getElementById("ctitle").value),
-      "FieldOfStady": String(document.getElementById("cfieldOfStudy").value),
-      "Publisher": String(document.getElementById("cpublisher").value),
-      "Author": String(document.getElementById("cauthor").value)
-  });
-  console.log(data);
 
-  xhr = new XMLHttpRequest();
-  xhr.withCredentials = true;
-  xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === 4) {
-          alert(this.responseText);
-          document.getElementById("createForm").dispatchEvent(new Event('submit'));
-      } 
-  });
+if (document.getElementById("textBook").checked)
+{
+  console.log("yes text book");
+  var data = JSON.stringify({
+    "title" : String(document.getElementById("ctitle").value),
+    "fieldOfStady": String(document.getElementById("cfieldOfStudy").value),
+    "publisher": String(document.getElementById("cpublisher").value),
+    "author": String(document.getElementById("cauthor").value),
+    "numberOfPage": String(document.getElementById("cnumberOfPages").value)
+});
+console.log(data);
 
-  xhr.open("POST", "http://localhost:2403/hw3");
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.send(data);
-  }
+xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+        alert(this.responseText);
+        document.getElementById("createForm").dispatchEvent(new Event('submit'));
+    } 
+});
 
-  
+xhr.open("POST", "http://localhost:2403/textbook");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.send(data);
+}
+
+ else if(document.getElementById("audioBook").checked) {
+  var data = JSON.stringify({
+    "title" : String(document.getElementById("ctitle").value),
+    "fieldOfStady": String(document.getElementById("cfieldOfStudy").value),
+    "publisher": String(document.getElementById("cpublisher").value),
+    "author": String(document.getElementById("cauthor").value),
+    "length": String(document.getElementById("clength").value)
+});
+console.log(data);
+
+xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+        alert(this.responseText);
+        document.getElementById("createForm").dispatchEvent(new Event('submit'));
+    } 
+});
+
+xhr.open("POST", "http://localhost:2403/audiobook");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.send(data);
+
+ }
+  };
+
+
  
   
 
@@ -152,10 +216,12 @@ function onRead() {
 
   });
 
-    xhr.open("GET", "http://localhost:2403/hw3");
+    xhr.open("GET", "http://localhost:2403/textbook");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send();
 }
+
+
 
 function parseCPUToTableRow(CPUs){
   var row=document.createElement('tr');
@@ -165,20 +231,24 @@ function parseCPUToTableRow(CPUs){
   row.appendChild(id);
 
   title=document.createElement('td');
-  title.innerText=CPUs['Title'];
+  title.innerText=CPUs['title'];
   row.appendChild(title);
 
   fieldOfStudy=document.createElement('td');
-  fieldOfStudy.innerText=CPUs['FieldOfStady'];
+  fieldOfStudy.innerText=CPUs['fieldOfStady'];
   row.appendChild(fieldOfStudy);
  
   publisher=document.createElement('td');
-  publisher.innerText=CPUs['Publisher'];
+  publisher.innerText=CPUs['publisher'];
   row.appendChild(publisher);
   
   author=document.createElement('td');
-  author.innerText=CPUs['Author'];
+  author.innerText=CPUs['author'];
   row.appendChild(author);
+
+  number=document.createElement('td');
+  number.innerText=CPUs['numberOfPage'];
+  row.appendChild(number);
 
   return row;
 }
@@ -213,12 +283,11 @@ function onPrepareUpdate(ev){
 function onUpdate(ev) {
   ev.preventDefault();
 
- 
   var data = JSON.stringify({
-    "Title" : String(document.getElementById("utitle").value),
-    "FieldOfStady": String(document.getElementById("ufieldOfStady").value),
-    "Publisher": String(document.getElementById("upublisher").value),
-    "Author": String(document.getElementById("uauthor").value)
+    "title" : String(document.getElementById("utitle").value),
+    "fieldOfStady": String(document.getElementById("ufieldOfStady").value),
+    "publisher": String(document.getElementById("upublisher").value),
+    "author": String(document.getElementById("uauthor").value)
   });
   console.log(data);
   xhr = new XMLHttpRequest();
@@ -236,7 +305,6 @@ function onUpdate(ev) {
   xhr.send(data);
 }
 
-
 function onPrepareDelete(ev){
   ev.preventDefault();
   xhrids = new XMLHttpRequest();
@@ -244,7 +312,6 @@ function onPrepareDelete(ev){
 
   xhrids.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
-          //console.log(this.response);
           result=JSON.parse(this.response);
           var ids=document.createElement('select');
           ids.className='form-control';
@@ -281,9 +348,7 @@ function onDelete(ev) {
 }
 
 (function () {
-//   document.getElementById('pcbutton').addEventListener(
-//     'click', onPrepareCreate
-// );
+
   document.getElementById('cbutton').addEventListener(
       'click',  onCreate 
   );
