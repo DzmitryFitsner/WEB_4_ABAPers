@@ -23,6 +23,20 @@
         <h1>HW3</h1>
       </div>
     </div>
+    <div class="card-body">
+        <form id='createForm'>
+
+          <div class="form-group">
+              <label for="cvariety">DEF</label>
+                <div>
+                  <input type="radio" class="radio-inline" id="textBook" name="drone" value="textBook">
+                  <label for="textBook">Textbook</label>
+                </div>
+                
+                <div ></div>
+                  <input type="radio" class="radio-inline" id="audioBook" name="drone" value="audioBook">
+                  <label for="audioBook">Audiobook</label>
+                </div>
 
     <div class="accordion" id="accordionExample">
       <div class="card">
@@ -35,13 +49,13 @@
           </h5>
         </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
           <div class="card-body">
             <form id='createForm'>
 
               <div class="form-group">
 
-                  <label for="cvariety">DEF</label>
+                  <!-- <label for="cvariety">DEF</label> -->
                   <!-- <form>
                       <select id="variety" class="form-control" name="aaaaaaa">
                           <option value="none">Выберите героя</option>
@@ -51,7 +65,7 @@
                         </select>
                   </form> -->
 
-                  <div>
+                  <!-- <div>
                       <input class="a" type="radio" id="textBook" name="drone" value="textBook">
                       <label for="textBook">Textbook</label>
                     </div>
@@ -59,7 +73,7 @@
                     <div>
                       <input  type="radio" id="audioBook" name="drone" value="audioBook">
                       <label for="audioBook">Audiobook</label>
-                    </div>
+                    </div> -->
                  
                 <label for="ctitle">Title</label>
                 <input type="text" class="form-control" id="ctitle" placeholder="Enter title">
@@ -106,18 +120,19 @@
             </button>
           </h5>
         </div>
+
+
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
           <div class="card-body">
+             
             <table class="table">
               <thead>
-                <tr>
+                <tr id="table_id">
                   <th scope="col">#</th>
                   <th scope="col">Title</th>
                   <th scope="col">Field of study</th>
                   <th scope="col">Publisher</th>
                   <th scope="col">Author</th>
-                  <th scope="col">Number of Page / Langht</th>
-
                 </tr>
               </thead>
               <tbody id='rTBody'>
@@ -157,7 +172,7 @@
                 <input type="text" class="form-control" id="upublisher"
                   placeholder="Enter publisher">
               </div>
-              <div class="form-group">
+              <div class="form-group" id="author">
                 <label for="Author">Author</label>
                 <input type="text" class="form-control" id="uauthor"
                   placeholder="Enter author">

@@ -34,22 +34,12 @@ Book.prototype.setAuthor = function (value) {
 
 Book.prototype.getAuthor = function () {
   return this.author;
-}
-
+  }
 }
 
 function Audiobook(title,  fieldOfStudy, publisher, author, length) {
   Book.call(this, title,  fieldOfStudy, publisher, author);
-
-
-
    this.length = length;
-  // this.setLength = function (value) {
-  //   length = value;
-  // }
-  // this.getLength = function () {
-  //   return length;
-  // }
 } 
 
 Audiobook.prototype = Object.create(Book.prototype);
@@ -68,8 +58,6 @@ Textbook.prototype.constructor = Textbook;
   var elem = document.createElement("div"); 
 
 document.getElementById("textBook").onclick = function(){
-
-  // console.log(document.getElementById("textBook").value);
 
     var elemT = document.createElement("div"),
     before = document.getElementById("before"); 
@@ -114,7 +102,7 @@ document.getElementById("audioBook").onclick = function() {
 
     var labA = document.createElement("label");
      labA.setAttribute('for', 'clength');
-     labA.innerText = "Lenght"
+     labA.innerText = "Lenght";
     
 
     var inpA = document.createElement("input");
@@ -194,8 +182,22 @@ function onRead() {
     xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 
-    xhr.addEventListener("readystatechange", function () {
+    
+    var pageOrLenght = document.createElement("th");
+    pageOrLenght.setAttribute('scope', 'col');
+    document.getElementById("table_id").appendChild(pageOrLenght);
 
+    if (document.getElementById("textBook").checked) {
+    pageOrLenght.innerText = "Number of Page";
+    var link = "http://localhost:2403/textbook/";
+    }
+
+    else if((document.getElementById("audioBook").checked)) {
+      pageOrLenght.innerText = "Lenght";
+      var link = "http://localhost:2403/audiobook/";
+    }
+
+    xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
 
           result=JSON.parse(this.response);
@@ -209,15 +211,12 @@ function onRead() {
           table.replaceChild(resultTBody,document.getElementById('rTBody'));
           resultTBody.id='rTBody';
       }
-
   });
-
-    xhr.open("GET", "http://localhost:2403/textbook");
+  
+    xhr.open("GET", link);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send();
 }
-
-
 
 function parseCPUToTableRow(CPUs){
   var row=document.createElement('tr');
@@ -242,15 +241,84 @@ function parseCPUToTableRow(CPUs){
   author.innerText=CPUs['author'];
   row.appendChild(author);
 
-  number=document.createElement('td');
-  number.innerText=CPUs['numberOfPage'];
-  row.appendChild(number);
+  if (document.getElementById("textBook").checked) {
 
+    number=document.createElement('td');
+    number.innerText=CPUs['numberOfPage'];
+    row.appendChild(number);
+    }
+    else if(document.getElementById("audioBook").checked) {
+      length=document.createElement('td');
+      length.innerText=CPUs['length'];
+      row.appendChild(length);
+    }
   return row;
 }
 
 function onPrepareUpdate(ev){
   ev.preventDefault();
+
+  if (document.getElementById("textBook").checked) {
+    var link = "http://localhost:2403/textbook/";
+
+    var elemT = document.createElement("div"),
+    before = document.getElementById("author"); 
+    elemT.setAttribute('class', 'form-group');
+    elemT.id="unumberOfPages"; 
+     
+    before.parentNode.insertBefore(elem, before);
+  
+    document.getElementById("unumberOfPages").innerHTML = "";
+
+      var labT = document.createElement("label");
+      labT.setAttribute('for', 'cnamberOfPages');
+      labT.innerText = "Number of pages";
+  
+      var inpT = document.createElement("input");
+      inpT.setAttribute('type', 'text');
+      inpT.setAttribute('class', 'form-control');
+      inpT.setAttribute('id', 'upnumberOfPages');
+      inpT.setAttribute('placeholder', 'Enter number');
+   
+    elemT.appendChild(labT);
+    elemT.appendChild(inpT);
+
+    
+    elem.appendChild(elemT);  
+    }
+
+    else if((document.getElementById("audioBook").checked)) {
+      var link = "http://localhost:2403/audiobook/";
+
+      var elemA = document.createElement("div"),
+    before = document.getElementById("author"); 
+  elemA.setAttribute('class', 'form-group');
+  elemA.id="show_input"; 
+
+  elem.id = "element";
+    before.parentNode.insertBefore(elem, before);
+  
+    document.getElementById("element").innerHTML = "";
+
+    var labA = document.createElement("label");
+     labA.setAttribute('for', 'uplength');
+     labA.innerText = "Lenght";
+    
+
+    var inpA = document.createElement("input");
+    inpA.setAttribute('type', 'text');
+    inpA.setAttribute('class', 'form-control');
+    inpA.setAttribute('id', 'uplength');
+    inpA.setAttribute('placeholder', 'Enter length');
+  
+
+  elemA.appendChild(labA);
+  elemA.appendChild(inpA);
+
+  elem.appendChild(elemA);
+    }
+
+
   xhrids = new XMLHttpRequest();
   xhrids.withCredentials = true;
 
@@ -270,7 +338,7 @@ function onPrepareUpdate(ev){
           ids.id='uid';
       }
   });
-  xhrids.open("GET", "http://localhost:2403/hw3");
+  xhrids.open("GET", link);
   xhrids.setRequestHeader("Content-Type", "application/json");
   xhrids.send();
 }
@@ -279,12 +347,31 @@ function onPrepareUpdate(ev){
 function onUpdate(ev) {
   ev.preventDefault();
 
-  var data = JSON.stringify({
-    "title" : String(document.getElementById("utitle").value),
-    "fieldOfStady": String(document.getElementById("ufieldOfStady").value),
-    "publisher": String(document.getElementById("upublisher").value),
-    "author": String(document.getElementById("uauthor").value)
-  });
+
+  if (document.getElementById("textBook").checked) {
+    var link = "http://localhost:2403/textbook/";
+
+
+    var data = JSON.stringify({
+      "title" : String(document.getElementById("utitle").value),
+      "fieldOfStady": String(document.getElementById("ufieldOfStady").value),
+      "publisher": String(document.getElementById("upublisher").value),
+      "author": String(document.getElementById("uauthor").value),
+      "numberOfPage" : String(document.getElementById("upnumberOfPages").value)
+    });
+    }
+
+    else if((document.getElementById("audioBook").checked)) {
+      var link = "http://localhost:2403/audiobook/";
+      var data = JSON.stringify({
+        "title" : String(document.getElementById("utitle").value),
+        "fieldOfStady": String(document.getElementById("ufieldOfStady").value),
+        "publisher": String(document.getElementById("upublisher").value),
+        "author": String(document.getElementById("uauthor").value),
+        "length" : String(document.getElementById("uplength").value)
+      });
+    }
+
   console.log(data);
   xhr = new XMLHttpRequest();
   xhr.withCredentials = true;
@@ -295,7 +382,7 @@ function onUpdate(ev) {
       }
   });
 
-  xhr.open("PUT", "http://localhost:2403/hw3/"+document.getElementById("uid").value);
+  xhr.open("PUT", link+document.getElementById("uid").value);
   xhr.setRequestHeader("Content-Type", "application/json");
   console.log(document.getElementById("uid").value);
   xhr.send(data);
@@ -305,6 +392,14 @@ function onPrepareDelete(ev){
   ev.preventDefault();
   xhrids = new XMLHttpRequest();
   xhrids.withCredentials = true;
+
+  if (document.getElementById("textBook").checked) {
+    var link = "http://localhost:2403/textbook/";
+    }
+
+    else if((document.getElementById("audioBook").checked)) {
+      var link = "http://localhost:2403/audiobook/";
+    }
 
   xhrids.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
@@ -321,7 +416,7 @@ function onPrepareDelete(ev){
           ids.id='did';
       }
   });
-  xhrids.open("GET", "http://localhost:2403/hw3");
+  xhrids.open("GET", link);
   xhrids.setRequestHeader("Content-Type", "application/json");
   xhrids.send();
 }
@@ -332,13 +427,21 @@ function onDelete(ev) {
    xhr = new XMLHttpRequest();
   xhr.withCredentials = true;
 
+  if (document.getElementById("textBook").checked) {
+    var link = "http://localhost:2403/textbook/";
+    }
+
+    else if((document.getElementById("audioBook").checked)) {
+      var link = "http://localhost:2403/audiobook/";
+    }
+
   xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
           console.log(this.responseText);
       }
   });
 
-  xhr.open("DELETE", "http://localhost:2403/hw3/"+document.getElementById("did").value);
+  xhr.open("DELETE", link + document.getElementById("did").value);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send();
 }
