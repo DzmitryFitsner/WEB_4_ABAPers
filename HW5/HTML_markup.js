@@ -8,10 +8,8 @@ divPositionBoot.className = "row justify-content-md-center";
 divContainer.appendChild(divPositionBoot);
 
 // def
-
 var defDivCard_body = document.createElement('div');
 defDivCard_body.className = "card-body";
-// document.body.append("defDiv");
 
 var formCreate = document.createElement('form');
 formCreate.id = "createForm";
@@ -118,10 +116,6 @@ inputCTitle.id = 'ctitle';
 inputCTitle.placeholder = 'Enter title';
 divForm_groupT.appendChild(inputCTitle);
 
-
-
-
-
 var divForm_groupT = document.createElement('div');
 divForm_groupT.className = "form-group";
 divCreateCard_body.appendChild(divForm_groupT);
@@ -138,10 +132,6 @@ lableCField.id = 'cfieldOfStudy';
 lableCField.placeholder = 'Enter field of study';
 divForm_groupT.appendChild(lableCField);
 
-
-
-
-
 var divForm_groupT = document.createElement('div');
 divForm_groupT.className = "form-group";
 divCreateCard_body.appendChild(divForm_groupT);
@@ -157,7 +147,6 @@ lableCPublisher.type = 'text';
 lableCPublisher.id = 'cpublisher';
 lableCPublisher.placeholder = 'Enter publisher';
 divForm_groupT.appendChild(lableCPublisher);
-
 
 
 var divForm_groupT = document.createElement('div');
