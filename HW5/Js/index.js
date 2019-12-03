@@ -1,56 +1,70 @@
-function Book(title,  fieldOfStudy, publisher, author) {
-  this.title = title;
-  this.fieldOfStudy = fieldOfStudy;
-  this.publisher = publisher;
-  this.author = author;
-  
-  Book.prototype.setTitle = function (value) {
-    this.title = value;
+class Book {
+  constructor(title, fieldOfStudy, publisher, author){
+    this.title = title;
+    this.fieldOfStudy = fieldOfStudy;
+    this.publisher = publisher;
+    this.author = author;
   }
-  
-  Book.prototype.getTitle = function () {
+
+  get title() {
     return this.title;
   }
-  
-  Book.prototype.setFieldOfStudy = function (value) {
-    this.fieldOfStudy = value;
+  set title(title) {
+    this._title = title;
   }
-  
-  Book.prototype.getFieldOfStudy = function () {
+
+  get fieldOfStudy() {
     return this.fieldOfStudy;
   }
-  
-  Book.prototype.setPublisher = function (value) {
-    this.publisher = value;
+  set fieldOfStudy(fieldOfStudy){
+    this._fieldOfStudy = fieldOfStudy;
   }
-  
-  Book.prototype.getPublisher = function () {
+
+  get publisher() {
     return this.publisher;
   }
-  
-  Book.prototype.setAuthor = function (value) {
-    this.author = value;
+  set publisher(publisher) {
+    this._publisher = publisher;
   }
   
-  Book.prototype.getAuthor = function () {
+  get author() {
     return this.author;
-    }
   }
-  
-  function Audiobook(title,  fieldOfStudy, publisher, author, length) {
-    Book.call(this, title,  fieldOfStudy, publisher, author);
-     this.length = length;
-  } 
-  
-  Audiobook.prototype = Object.create(Book.prototype);
-  Audiobook.prototype.constructor = Audiobook;
-  
-  function Textbook(title,  fieldOfStudy, publisher, author, numberOfPages) {
-    Book.call(this, title,  fieldOfStudy, publisher, author);
-  
+  set author(author) {
+    this._author = author;
+  }
+}
+
+class Audiobook extends Book {
+  constructor(title,  fieldOfStudy, publisher, author, length) {
+    super(...arguments);
+    this.length = length;
+  }
+
+  get length() {
+    return this.length;
+  }
+  set length(length) {
+    this._length = length;
+  }
+}
+
+class Textbook extends Book {
+  constructor (title,  fieldOfStudy, publisher, author, numberOfPages) {
+    super(...arguments);
     this.numberOfPages = numberOfPages;
-  
   }
-  
-  Textbook.prototype.constructor = Object.create(Book.prototype);
-  Textbook.prototype.constructor = Textbook;
+
+  get numberOfPages() {
+    return this.numberOfPages;
+  }
+  set numberOfPages (numberOfPages) {
+    this._numberOfPages = numberOfPages;
+  }
+}
+
+let a = new Textbook(1,1,1,1,1);
+let b = new Audiobook(1,1,1,1,1);
+
+console.log(a);
+console.log(b);
