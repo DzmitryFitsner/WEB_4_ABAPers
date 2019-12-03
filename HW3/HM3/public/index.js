@@ -119,9 +119,6 @@ document.getElementById("audioBook").onclick = function() {
 
 }
 
-
-
-
 function onCreate(ev) {
   ev.preventDefault();
 
@@ -182,7 +179,7 @@ function onRead() {
     xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 
-    
+
     var pageOrLenght = document.createElement("th");
     pageOrLenght.setAttribute('scope', 'col');
     document.getElementById("table_id").appendChild(pageOrLenght);
@@ -420,7 +417,6 @@ function onPrepareDelete(ev){
   xhrids.setRequestHeader("Content-Type", "application/json");
   xhrids.send();
 }
-
 
 function onDelete(ev) {
   ev.preventDefault();

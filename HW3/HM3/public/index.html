@@ -18,25 +18,26 @@
 
 <body  class="main">
   <div class="container">
-    <div class="row justify-content-md-center">
+    <!-- <div class="row justify-content-md-center">
       <div class="col-lg-2">
         <h1>HW3</h1>
       </div>
-    </div>
+    </div> -->
     <div class="card-body">
         <form id='createForm'>
 
           <div class="form-group">
-              <label for="cvariety">DEF</label>
-                <div>
+            <label for="cvariety">DEF:</label>
+                <div class="text_radio">
                   <input type="radio" class="radio-inline" id="textBook" name="drone" value="textBook">
                   <label for="textBook">Textbook</label>
                 </div>
-                
-                <div ></div>
+
+                <div class="audio-radio">
                   <input type="radio" class="radio-inline" id="audioBook" name="drone" value="audioBook">
                   <label for="audioBook">Audiobook</label>
                 </div>
+          </div>
 
     <div class="accordion" id="accordionExample">
       <div class="card">
@@ -54,26 +55,6 @@
             <form id='createForm'>
 
               <div class="form-group">
-
-                  <!-- <label for="cvariety">DEF</label> -->
-                  <!-- <form>
-                      <select id="variety" class="form-control" name="aaaaaaa">
-                          <option value="none">Выберите героя</option>
-                          <option id="asd" value="none">Textbook</option>
-                          <option >Audiobook</option>
-                
-                        </select>
-                  </form> -->
-
-                  <!-- <div>
-                      <input class="a" type="radio" id="textBook" name="drone" value="textBook">
-                      <label for="textBook">Textbook</label>
-                    </div>
-                    
-                    <div>
-                      <input  type="radio" id="audioBook" name="drone" value="audioBook">
-                      <label for="audioBook">Audiobook</label>
-                    </div> -->
                  
                 <label for="ctitle">Title</label>
                 <input type="text" class="form-control" id="ctitle" placeholder="Enter title">
@@ -93,18 +74,6 @@
                   placeholder="Enter author">
               </div>
 
-              <!-- <div class="form-group" id="show_input">
-                <label for="cauthor">Length</label>
-                <input type="text" class="form-control" id="clength"
-                  placeholder="Enter length ">
-              </div>
-
-              <div class="form-group" id="show_number">
-                <label for="cauthor">Number of page</label>
-                <input type="text" class="form-control" id="cnumber"
-                  placeholder="Enter length ">
-              </div> -->
-
               <button type="submit" id='cbutton' class="btn btn-primary">Submit</button>
 
             </form>
@@ -120,7 +89,6 @@
             </button>
           </h5>
         </div>
-
 
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
           <div class="card-body">
@@ -184,7 +152,6 @@
         </div>
       </div>
 
-
       <div class="card">
         <div class="card-header" id="headingFour">
           <h5 class="mb-0">
@@ -193,25 +160,15 @@
               Delete
             </button>
           </h5>
-          
-        </div>
-        
-          
-        </select>
-        <!-- <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-          <div class="card-body">
-            <form id='deleteForm'>
-              <div class="form-group">
-                <label for="did">ID</label>
-                <input type="text" class="form-control" id="did" placeholder="Enter ID">
-              </div> -->
+        </div>         
+      </select>
+
               <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
                   <div class="card-body">
                     <form id='deleteForm'>
                       <div class="form-group">
                         <label for="did">id</label>
                         <select id="did" class="form-control">
-                          
                         </select>
                       </div>
               <button type="submit" id='dbutton' class="btn btn-primary">Submit</button>
