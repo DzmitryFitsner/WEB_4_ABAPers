@@ -12,6 +12,10 @@
 
 [task_1-2](https://dzmitryfitsner.github.io/WEB_4_ABAPers/HW2/task_1-2/index.html)
 
-### ***HW3***
+### ***HW3-4***
+
+[task_1](https://dzmitryfitsner.github.io/WEB_4_ABAPers/HW3/HM3/public/index.html)
+
+### ***HW5***
 
 [task_1](https://dzmitryfitsner.github.io/WEB_4_ABAPers/HW3/HM3/public/index.html)
