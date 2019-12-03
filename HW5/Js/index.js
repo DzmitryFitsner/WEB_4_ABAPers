@@ -62,9 +62,3 @@ class Textbook extends Book {
     this._numberOfPages = numberOfPages;
   }
 }
-
-let a = new Textbook(1,1,1,1,1);
-let b = new Audiobook(1,1,1,1,1);
-
-console.log(a);
-console.log(b);
