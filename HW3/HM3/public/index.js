@@ -265,7 +265,7 @@ function onPrepareUpdate(ev){
      
     before.parentNode.insertBefore(elem, before);
   
-    document.getElementById("unumberOfPages").innerHTML = "";
+    // document.getElementById("unumberOfPages").innerHTML = "";
 
       var labT = document.createElement("label");
       labT.setAttribute('for', 'cnamberOfPages');

@@ -189,7 +189,7 @@ divRCard_header.appendChild(h_5);
 var btnRead = document.createElement('button');
 btnRead.className = "btn btn-link";
 btnRead.type = "button";
-btnRead.id = "pcbutton";
+btnRead.id = "rbutton";
 btnRead.setAttribute('data-toggle', "collapse");
 btnRead.setAttribute('data-target', "#collapseTwo");
 btnRead.setAttribute('aria-expanded', "true");
@@ -243,6 +243,11 @@ var thRTableAuthor = document.createElement('th');
 thRTableAuthor.scope = 'col';
 thRTableAuthor.innerHTML = "Author";
 trR.appendChild(thRTableAuthor);
+
+var thRTableDef = document.createElement('th');
+thRTableDef.scope = 'col';
+// thRTableDef.innerHTML = "Author";
+trR.appendChild(thRTableDef);
 
 
 var tbodyTable = document.createElement('tbody');
@@ -395,7 +400,7 @@ divDCard_header.appendChild(h_5D);
 var btnDelete = document.createElement('button');
 btnDelete.className = "btn btn-link";
 btnDelete.type = "button";
-btnDelete.id = "dbutton";
+btnDelete.id = "pdbutton";
 btnDelete.setAttribute('data-toggle', "collapse");
 btnDelete.setAttribute('data-target', "#collapseFour");
 btnDelete.setAttribute('aria-expanded', "true");
