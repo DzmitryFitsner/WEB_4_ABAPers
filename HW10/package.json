@@ -1,7 +1,7 @@
 {
   "name": "package.json",
   "version": "1.0.0",
-  "description": "",
+  "description": "Install Grunt",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/DzmitryFitsner/WEB_4_ABAPers.git"
   },
-  "keywords": [
-    "dmitry238qwerty"
-  ],
   "author": "Dzmitry Fitsner",
   "license": "ISC",
   "bugs": {
