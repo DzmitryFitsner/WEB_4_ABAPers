@@ -37,3 +37,16 @@ console.log(nikol.getName());
 console.log(dzmitry.getPlace());
 console.log(dzmitry.getName());
 
+var data = [nikol.getName(), dzmitry.getPlace(), dzmitry.getName()];
+
+
+const express = require('express')
+const app = express()
+ 
+app.get('/', function (req, res) {
+  res.send(data.join(' '));
+})
+ 
+app.listen(3000);
+
+
