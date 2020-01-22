@@ -23,7 +23,7 @@ formCreate.appendChild(divFormGroup);
 var labelDef = document.createElement('label');
 labelDef.className = 'row';
 labelDef.for = "cvariety";
-labelDef.innerHTML = "DEF";
+labelDef.innerHTML = "";
 divFormGroup.appendChild(labelDef);
 
 var divInputText = document.createElement('div');
